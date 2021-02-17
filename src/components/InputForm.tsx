@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import NumberField from './NumberField';
 import { validateNumberField } from '../utils/validation';
+import { checkTriangleWrapper } from '../utils/triangleType';
 
 function InputForm() {
   return (
@@ -17,8 +18,13 @@ function InputForm() {
           errors.sideB = validateNumberField(values.sideB);
           errors.sideC = validateNumberField(values.sideC);
         }}
-        onSubmit={values => {
-          console.log(values);
+        onSubmit={(values) => {
+          const typeOfTriangle = checkTriangleWrapper({
+            a: values.sideA,
+            b: values.sideB,
+            c: values.sideC,
+          });
+          console.log(values, typeOfTriangle);
         }}
       >
         {({
@@ -47,7 +53,7 @@ function InputForm() {
               value={values.sideC}
               error={errors.sideC}
             />
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit">
               Submit
             </button>
           </form>
