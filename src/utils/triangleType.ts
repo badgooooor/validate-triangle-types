@@ -55,4 +55,5 @@ export const checkTriangleWrapper = (triangle: TriangleProps) => {
   } else {
     return "Error";
   }
+  return '';
 }

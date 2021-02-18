@@ -2,8 +2,16 @@ import { Formik } from 'formik';
 import NumberField from './NumberField';
 import { validateNumberField } from '../utils/validation';
 import { checkTriangleWrapper } from '../utils/triangleType';
+import { observer } from 'mobx-react';
+import { useState } from 'react';
+import TriangleType from './TriangleType';
 
-function InputForm() {
+const InputForm = observer(() => {
+  const [result, setResult] = useState('');
+  const [triangle, setTriangle] = useState({
+    a:0, b:0, c:0,
+  });
+
   return (
     <div>
       <Formik 
@@ -24,7 +32,12 @@ function InputForm() {
             b: values.sideB,
             c: values.sideC,
           });
-          console.log(values, typeOfTriangle);
+          setResult(typeOfTriangle);
+          setTriangle({
+            a: values.sideA,
+            b: values.sideB,
+            c: values.sideC,
+          })
         }}
       >
         {({
@@ -59,8 +72,12 @@ function InputForm() {
           </form>
         )}
       </Formik>
+      <div>
+        <h2>Result: {result}</h2>
+        <TriangleType result={result} />
+      </div>
     </div>
   );
-}
+});
 
 export default InputForm;
