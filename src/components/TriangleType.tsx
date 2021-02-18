@@ -19,7 +19,7 @@ function TriangleType({ result }: any) {
   return (
     <div>
       {
-        imageSrc() !== 'Error' &&
+        (imageSrc() !== 'Error' || imageSrc() !== '') &&
         <img src={imageSrc()} alt="Triangle" width={300} height={300} />
       }
     </div>
