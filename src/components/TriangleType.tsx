@@ -14,12 +14,15 @@ function TriangleType({ result }: any) {
         return isosceles;
       case "Scalene Triangle":
         return scalene;
+      default:
+        return 'Error';
     }
   }
+
   return (
     <div>
       {
-        (imageSrc() !== 'Error' || imageSrc() !== '') &&
+        (imageSrc() !== 'Error') &&
         <img src={imageSrc()} alt="Triangle" width={300} height={300} />
       }
     </div>

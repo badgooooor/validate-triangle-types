@@ -33,7 +33,7 @@ export const _pythagorean = (a: number, b: number, c: number) => {
 
 export const isRightTriangle = (triangle: TriangleProps) => {
   const { a, b, c } = triangle;
-  return _pythagorean(a, b, c) || _pythagorean(b, a, c) || _pythagorean(c, a, b);
+  return _pythagorean(a, b, c) || _pythagorean(b, c, a) || _pythagorean(c, a, b);
 }
 
 export const checkTriangleWrapper = (triangle: TriangleProps) => {
